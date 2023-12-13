@@ -1,0 +1,14 @@
+{% extends 'inscri-layout.html.twig' %}
+
+{% block title %}voir{% endblock %}
+
+{% block body %}
+<h2> Détail abonné n° {{abonne.id}} </h2>
+<a class="btn btn-success"href="{{path('inscri_accueil')}}">Retourner à l'acceuil</a>
+<ul style="list-style: none">
+ <li> Nom :  {{abonne.nom | upper}}</li>
+ <li> Prenom :  {{abonne.prenom}}</li>
+ <li> Date de naissance :  {{abonne.dateNaissance | date('d/m/Y')}}</li>
+ <li> Email :  {{abonne.email}}</li>
+</ul>
+{% endblock %}

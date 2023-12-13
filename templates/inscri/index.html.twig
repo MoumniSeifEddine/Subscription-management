@@ -1,0 +1,53 @@
+
+
+
+{% extends 'inscri-layout.html.twig' %}
+{% block body %}
+<h2>Liste des abonnés | <small><a href="{{path('inscri_ajouter')}}">Ajouter</a></small></h2>
+{{form_start(f)}}
+  {{form_widget(f)}}
+{{form_end(f)}}
+{% for msg in app.flashes('notice') %}
+<div class="alert alert-success">
+{{msg}}
+</div>
+{% endfor %}
+<table class="table table-hover table-striped" border="1">
+<thead>
+<tr>
+<th>#</th>
+<th>Nom & Prénom</th>
+<th>Date de naissance</th>
+<th>E-mail</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+{% for abonne in lesAbonnes %}
+<tr>
+<td>{{abonne.id}}</td>
+<td>{{abonne.nom}} {{abonne.prenom | upper}}</td>
+<td>{{abonne.dateNaissance | date('d/m/Y')}}</td>
+<td>{{abonne.email }}</td>
+<td>
+<a class="btn btn-primary" href="{{path('inscri_voir', {'id':abonne.id})}}">Voir</a>
+<a class="btn btn-info"href="{{path('inscri_modifier', {'id':abonne.id})}}">Modifier</a>
+<a class="btn btn-danger" href="{{path('inscri_supprimer', {'id':abonne.id})}}">Supprimer</a>
+</tr>
+</td>
+{% else %}
+<tr>
+<td colspan="5">Aucun abonné</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+<script>
+$(".btn-danger").click(function(){
+returnconfirm("Supprimer ?");
+})
+$(".btn-info").click(function(){
+Return confirm("Modifier ?");
+})
+</script>
+{% endblock %}

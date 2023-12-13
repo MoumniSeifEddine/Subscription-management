@@ -1,0 +1,11 @@
+{% extends 'inscri-layout.html.twig' %}
+
+{% block title %}ajouter{% endblock %}
+
+{% block body %}
+<h2>Modifier l'abonné n ° {{abonne.id}}</h2>
+<a class="btn btn-success"href="{{path('inscri_accueil')}}">Retourner à l'acceuil</a>
+{{form_start(f)}}
+  {{form_widget(f)}}
+{{form_end(f)}}
+{% endblock %}
